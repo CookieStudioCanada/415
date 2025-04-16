@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module | Fiscalité Crypto QC/CAN</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Fiscalité des cryptoactifs</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="app.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="auth-link">Connexion / Inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="profile-link" style="display: none;">Mon Profil</a> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <section class="video-player-section">
+            <h2 id="module-title" class="text-center mb-4">Titre du module chargé ici</h2>
+            <!-- Video player area -->
+            <div class="video-player-container ratio ratio-16x9 mb-4"> <!-- Maintain aspect ratio -->
+                 <!-- Standard HTML Video Player -->
+                 <video 
+                    controls 
+                    preload="metadata" 
+                    poster="https://via.placeholder.com/800x450.png?text=Contenu+du+Module" 
+                    class="w-100 h-100" style="background-color: #000;"> <!-- Ensure video fills container -->
+                    <source src="videos/module-video.mp4" type="video/mp4"> 
+                    <!-- Add other formats if needed, e.g., webm, ogg -->
+                    <!-- <source src="videos/module-video.webm" type="video/webm"> -->
+                    Votre navigateur ne supporte pas la balise vidéo ou les formats fournis.
+                 </video>
+            </div>
+            <!-- Module Info Section -->
+            <div class="video-info p-4 border rounded bg-light">
+                <h3 class="mb-3">Description du module</h3>
+                <p id="module-description" class="mb-4">Description détaillée du contenu de ce module, objectifs d'apprentissage, et points clés abordés.</p>
+                <!-- Potential additional sections: Resources, Quiz link, etc. -->
+                <div>
+                    <h4 class="fs-5 mb-2">Ressources additionnelles</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Lien vers guide PDF (exemple)</a></li>
+                        <li><a href="#">Calculateur Simplifié (exemple)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container text-center text-muted py-3 mt-auto border-top">
+        <p>&copy; 2024 Fiscalité des cryptoactifs. Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <!-- Page-specific script -->
+    <script>
+        console.log('Video page script loaded.');
+        // Get module ID from URL query parameter (e.g., video.html?module=intro-tax)
+        const urlParams = new URLSearchParams(window.location.search);
+        const moduleId = urlParams.get('module'); // Changed query param name
+        console.log('Module ID from URL:', moduleId);
+        
+        const moduleTitleElement = document.getElementById('module-title');
+        const moduleDescriptionElement = document.getElementById('module-description');
+        const playerContainer = document.querySelector('.video-player-container'); 
+        console.log('Player container element:', playerContainer);
+
+        // Placeholder data - adjust titles to sentence case
+        const moduleData = {
+            'intro-tax': {
+                title: 'Introduction à la fiscalité crypto',
+                description: 'Ce module couvre les concepts fondamentaux de l\'imposition des cryptomonnaies au Canada et au Québec, incluant la différence entre gain en capital et revenu d\'entreprise.',
+                videoSrc: null, // Add path to actual video later
+            },
+            'capital-gains': {
+                title: 'Calcul des gains (et pertes) en capital',
+                description: 'Apprenez à calculer le coût de base rajusté (CBR) de vos cryptos et à déterminer vos gains ou pertes en capital imposables pour chaque transaction.',
+                videoSrc: null,
+            },
+            'reporting-obligations': {
+                title: 'Obligations de déclaration',
+                description: 'Comprenez où et comment déclarer vos revenus et gains en capital liés aux cryptomonnaies dans vos déclarations de revenus fédérale (T1) et québécoise (TP1).',
+                videoSrc: null,
+            },
+            'quebec-specifics': {
+                title: 'Spécificités québécoises',
+                description: 'Explorez les nuances fiscales spécifiques au Québec concernant les cryptomonnaies, y compris les formulaires pertinents et les différences potentielles avec les règles fédérales.',
+                videoSrc: null,
+            },
+        };
+        console.log('Module data object:', moduleData);
+
+        if (moduleId && moduleData[moduleId]) {
+            const data = moduleData[moduleId];
+            console.log('Found data for module:', data);
+            moduleTitleElement.textContent = data.title;
+            moduleDescriptionElement.textContent = data.description;
+            // Load video source if available
+            // if (data.videoSrc) {
+            //     const sourceElement = videoElement.querySelector('source') || document.createElement('source');
+            //     sourceElement.setAttribute('src', data.videoSrc);
+            //     sourceElement.setAttribute('type', 'video/mp4');
+            //     videoElement.appendChild(sourceElement);
+            // }
+        } else {
+            console.warn('Module ID not found or invalid. Hiding player and info.');
+            moduleTitleElement.textContent = 'Module Introuvable';
+            moduleDescriptionElement.textContent = 'Veuillez sélectionner un module depuis la page d\'accueil.';
+            // Hide the container if module is not found
+            if(playerContainer) playerContainer.style.display = 'none'; 
+            document.querySelector('.video-info').style.display = 'none'; // Hide info section too
+        }
+    </script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+    <!-- Profile Modal (Copied Here) -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profileModalLabel">Mon Compte (Placeholder)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Informations du compte et options ici...</p>
+                    <p>Statut d'abonnement: <span id="modal-subscription-status">Chargement...</span></p>
+                    <!-- Add more profile details/options here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger" id="logout-from-modal">Déconnexion</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

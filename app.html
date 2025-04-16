@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App | Fiscalité des cryptoactifs</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fiscalité des cryptoactifs</a> <!-- Brand doesn't need link here -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto"> 
+                        <!-- Links managed by JS -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="auth-link">Déconnexion</a> <!-- Default to logout on app page -->
+                        </li>
+                        <li class="nav-item d-none"> <!-- Hide profile by default, shown by JS -->
+                            <a class="nav-link" href="#" id="profile-link" data-bs-toggle="modal" data-bs-target="#profileModal">Compte</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        
+        <!-- === Modules Section === -->
+        <section class="modules-section py-3"> 
+            <h2 class="text-center mb-4">Modules</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <!-- Module Card 1 -->
+                <div class="col">
+                    <div class="card h-100 text-center module-card bg-body-secondary border-secondary" data-module-id="intro-tax">
+                        <div class="module-icon card-img-top">💡</div> 
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Introduction à la fiscalité cryptoactifs</h5>
+                            <p class="card-text small text-body-emphasis opacity-75">Les bases essentielles : définition des gains, types de transactions imposables.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Module Card 2 -->
+                 <div class="col">
+                    <div class="card h-100 text-center module-card bg-body-secondary border-secondary" data-module-id="capital-gains">
+                        <div class="module-icon card-img-top">📊</div> 
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Calcul des gains (et pertes) en capital</h5>
+                            <p class="card-text small text-body-emphasis opacity-75">Méthodes de calcul, exemples concrets, traitement des pertes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Module Card 3 -->
+                 <div class="col">
+                     <div class="card h-100 text-center module-card bg-body-secondary border-secondary" data-module-id="reporting-obligations">
+                        <div class="module-icon card-img-top">📝</div> 
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Obligations de déclaration</h5>
+                            <p class="card-text small text-body-emphasis opacity-75">Comment et où déclarer vos transactions sur vos déclarations fédérale et québécoise.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Module Card 4 -->
+                 <div class="col">
+                    <div class="card h-100 text-center module-card bg-body-secondary border-secondary" data-module-id="quebec-specifics">
+                        <div class="module-icon card-img-top">⚜️</div> 
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Spécificités québécoises</h5>
+                            <p class="card-text small text-body-emphasis opacity-75">Différences et points importants pour la déclaration au Québec.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- === End Modules Section === -->
+
+        <!-- === Documentation Section === -->
+        <section class="documentation-section py-3">
+            <h2 class="text-center mb-4">Documentation et ressources</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- Col 1 -->
+                <div class="col">
+                    <div class="card mb-4">
+                        <div class="card-header fw-bold">Articles de lois</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Lien vers LIR (Exemple)</a></li>
+                            <li class="list-group-item"><a href="#">Lien vers Folio et interprétation (ARC)</a></li>
+                            <li class="list-group-item"><a href="#">Lien vers Revenu Québec</a></li>
+                        </ul>
+                    </div>
+                     <div class="card mb-4">
+                        <div class="card-header fw-bold">Feuilles de calcul</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Calculateur (Bientôt !)</a></li>
+                            <li class="list-group-item"><a href="#">Suivi de transactions (Modèle)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Col 2 -->
+                <div class="col">
+                     <div class="card mb-4">
+                        <div class="card-header fw-bold">Articles de blog</div>
+                         <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Comprendre les NFT et les impôts (Exemple)</a></li>
+                            <li class="list-group-item"><a href="#">Staking au Canada: Guide fiscal (Exemple)</a></li>
+                        </ul>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header fw-bold">Formulaires fiscaux</div>
+                         <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Annexe 3 (Gains en capital) - Fédéral</a></li>
+                            <li class="list-group-item"><a href="#">Annexe G - Québec</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- === End Documentation Section === -->
+
+    </main>
+
+    <footer class="container text-center text-muted py-3 mt-auto border-top">
+        <p>&copy; 2024 Fiscalité des cryptoactifs. Tous droits réservés.</p>
+    </footer>
+
+     <!-- Profile Modal (Copied Here) -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profileModalLabel">Mon Compte</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Statut d'abonnement: <span id="modal-subscription-status">Chargement...</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger" id="logout-from-modal">Déconnexion</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+</body>
+</html> 
